@@ -3,10 +3,8 @@
     <img class="center" alt="Vue logo" src="@/assets/logo.png">
     <h1 align="center">Tree</h1>
     <v-layout row wrap justify-center>
-      <v-flex xs12>
-      </v-flex>
       <v-flex xs2>
-        <v-text-field label="Branch"></v-text-field>
+        <v-text-field label="Branch"/>
       </v-flex>
       <v-flex xs1>
         <v-btn small @click="$router.push('branch/foobar')">Go to Branch</v-btn>
@@ -17,13 +15,17 @@
 
 <script>
 export default {
-  name: 'tree',
+  name: 'Tree',
+  metaInfo: {
+    title: 'Tree',
+    titleTemplate: null,
+  },
   methods: {
     goToBranch() {
-      this.$router.push('branch/')
-    }
-  }
-}
+      this.$router.push('branch/');
+    },
+  },
+};
 </script>
 
 <style scoped>

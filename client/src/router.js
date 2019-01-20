@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Tree from '@/components/Tree.vue'
-import Branch from '@/components/Branch.vue'
-import Leaf from '@/components/Leaf.vue'
-import Hello from '@/components/HelloWorld.vue'
+import Meta from 'vue-meta';
+import Tree from '@/components/Tree.vue';
+import Branch from '@/components/Branch.vue';
+import Leaf from '@/components/Leaf.vue';
+import Hello from '@/components/HelloWorld.vue';
+import NotFound from '@/components/NotFound';
 
 Vue.use(Router);
+Vue.use(Meta);
 
 export default new Router({
   routes: [
@@ -13,6 +16,9 @@ export default new Router({
       path: '/',
       name: 'tree',
       component: Tree,
+      meta: {
+        title: 'Tree',
+      },
     },
     {
       path: '/hello',
@@ -33,5 +39,7 @@ export default new Router({
         },
       ],
     },
+    { path: '/404', component: NotFound },
+    { path: '*', redirect: '/404' },
   ],
 });

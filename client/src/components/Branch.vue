@@ -3,8 +3,6 @@
     <img class="center" alt="Vue logo" src="@/assets/logo.png">
     <h1 align="center">Branch</h1>
     <v-layout row wrap justify-center>
-      <v-flex xs12>
-      </v-flex>
       <v-flex xs2>
         <v-text-field label="Leaf"></v-text-field>
       </v-flex>
@@ -19,7 +17,10 @@
 <script>
 export default {
   name: 'Branch',
-}
+  metaInfo: {
+    title: 'Branch: Foobar',
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
