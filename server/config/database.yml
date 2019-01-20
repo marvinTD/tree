@@ -1,25 +1,30 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 25 } %>
+  database: tree
+  username: tree_db_user
+# For details on connection pooling, see Rails configuration guide
+#   http://guides.rubyonrails.org/configuring.html#database-pooling
+#
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
+#
 development:
   <<: *default
-  database: db/development.sqlite3
+  host: localhost
+  port: 11177
+  password: password
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  host: localhost
+  port: 11188
+  password: password
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  host: <%= ENV.fetch('DB_HOST') { 'DB_HOST_UNSET' } %>
+  port: <%= ENV.fetch('DB_PORT') { 'DB_PORT_UNSET' } %>
+  username: <%= ENV.fetch('DB_USERNAME') { 'DB_USERNAME_UNSET' } %>
+  password: <%= ENV.fetch('DB_PASSWORD') { 'DB_PASS_UNSET' } %>
+  sslmode: require
